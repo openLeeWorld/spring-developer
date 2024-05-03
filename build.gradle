@@ -38,5 +38,5 @@ test {
 }
 
 jar {
-    enabled = false
+    enabled = false // 의존성 없는 plain-jar생성 방지용, executable-jar만 생성해야함(대신 gradle에 의존성이 모두 담겨야함)
 }

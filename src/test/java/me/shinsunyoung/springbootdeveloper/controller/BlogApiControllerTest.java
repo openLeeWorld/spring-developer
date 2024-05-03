@@ -1,6 +1,7 @@
 package me.shinsunyoung.springbootdeveloper.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.shinsunyoung.springbootdeveloper.config.error.ErrorCode;
 import me.shinsunyoung.springbootdeveloper.domain.Article;
 import me.shinsunyoung.springbootdeveloper.domain.User;
 import me.shinsunyoung.springbootdeveloper.dto.AddArticleRequest;
@@ -22,13 +23,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import com.github.javafaker.Faker; // 그래들 오류때문에 수동으로 import함
 
 import java.security.Principal;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -202,10 +203,9 @@ class BlogApiControllerTest {
     @Test
     public void addArticleSizeValidation() throws Exception {
         //given
-        Faker faker = new Faker(); // 이름,주소,이메일 등의 가짜 정보 생성
 
         final String url = "/api/articles";
-        final String title = faker.lorem().characters(11);
+        final String title = "otidkduvjdeoflkcms";
         final String content = "content";
         final AddArticleRequest userRequest = new AddArticleRequest(title, content);
 
@@ -224,6 +224,40 @@ class BlogApiControllerTest {
 
         //then
         result.andExpect(status().isBadRequest());
+    }
+
+    @DisplayName("findArticle: 잘못된 HTTP메서드로 아티클을 조회하려고 하면 조회에 실패한다.")
+    @Test
+    public void invalidHttpMethod() throws Exception {
+        //given
+        final String url = "/api/articles/{id}";
+
+        //when
+        final ResultActions resultActions = mockMvc.perform(post(url, 1));
+
+        //then
+        resultActions
+                .andDo(print())
+                .andExpect(status().isMethodNotAllowed())
+                .andExpect(jsonPath("$.message").value(ErrorCode.METHOD_NOT_ALLOWED.getMessage()));
+    }
+
+    @DisplayName("findArticle: 존재하지 않는 아티클을 조회하려고 하면 조회에 실패한다.")
+    @Test
+    public void findArticleInvalidArticle() throws Exception {
+        //given
+        final String url = "/api/articles/{id}";
+        final long invalidId = 1;
+
+        //when
+        final ResultActions resultActions = mockMvc.perform(get(url, invalidId));
+
+        //then
+        resultActions
+                .andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value(ErrorCode.ARTLICLE_NOT_FOUND.getMessage()))
+                .andExpect(jsonPath("$.code").value(ErrorCode.ARTLICLE_NOT_FOUND.getCode()));
     }
 
     private Article createDefaultArticle() {
