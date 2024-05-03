@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import com.github.javafaker.Faker; // 그래들 오류때문에 수동으로 import함
 
 import java.security.Principal;
 import java.util.List;
@@ -34,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class BlogApiControllerTest {
-    
+
     @Autowired
     protected MockMvc mockMvc;
     
@@ -169,6 +170,60 @@ class BlogApiControllerTest {
 
         assertThat(article.getTitle()).isEqualTo(newTitle);
         assertThat(article.getContent()).isEqualTo(newContent);
+    }
+
+    @DisplayName("addArticle: 아티클 추가할 때 title이 null이면 실패한다.")
+    @Test
+    public void addArticleNullValidation() throws Exception {
+        //given
+        final String url = "/api/articles";
+        final String title = null;
+        final String content = "content";
+        final AddArticleRequest userRequest = new AddArticleRequest(title, content);
+
+        //객체 json으로 직렬화
+        final String requestBody = objectMapper.writeValueAsString(userRequest);
+
+        Principal principal = Mockito.mock(Principal.class);
+        Mockito.when(principal.getName()).thenReturn("username");
+
+        //when
+        //설정한 내용을 바탕으로 요청 전송
+        ResultActions result = mockMvc.perform(post(url)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .principal(principal)
+                .content(requestBody));
+
+        //then
+        result.andExpect(status().isBadRequest());
+    }
+
+    @DisplayName("addArticle: 아티클 추가할 때 title이 10자를 넘으면 실패한다.")
+    @Test
+    public void addArticleSizeValidation() throws Exception {
+        //given
+        Faker faker = new Faker(); // 이름,주소,이메일 등의 가짜 정보 생성
+
+        final String url = "/api/articles";
+        final String title = faker.lorem().characters(11);
+        final String content = "content";
+        final AddArticleRequest userRequest = new AddArticleRequest(title, content);
+
+        //객체 json으로 직렬화
+        final String requestBody = objectMapper.writeValueAsString(userRequest);
+
+        Principal principal = Mockito.mock(Principal.class);
+        Mockito.when(principal.getName()).thenReturn("username");
+
+        //when
+        //설정한 내용을 바탕으로 요청 전송
+        ResultActions result = mockMvc.perform(post(url)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .principal(principal)
+                .content(requestBody));
+
+        //then
+        result.andExpect(status().isBadRequest());
     }
 
     private Article createDefaultArticle() {
