@@ -37,5 +37,20 @@ spring:
   profiles: # application-KEY.yml은 github에서 뺀 개인정보임
     include: KEY
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google: # /oauth2/authorization/google 이 주소를 동작하게 한다.
+            client-id: client-id
+            client-secret: client-secret
+            scope:
+              - email
+              - profile
+
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: secret-key
+
 
 
