@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TokenProviderTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TokenProviderTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/me.shinsunyoung.springbootdeveloper.config.jwt.html">me.shinsunyoung.springbootdeveloper.config.jwt</a> &gt; TokenProviderTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">5</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">2.019s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">generatedToken(): 유저 정보와 만료 기간을 전달해 토큰을 만들 수 있다.</td>
+<td class="success">generateToken()</td>
+<td class="success">0.284s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAuthentication(): 토큰 기반으로 인증 정보를 가져올 수 있다.</td>
+<td class="success">getAuthentication()</td>
+<td class="success">0.026s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getUserId(): 토큰 기반으로 유저 ID를 가져올 수 있다.</td>
+<td class="success">getUserId()</td>
+<td class="success">0.022s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">validToken(): 만료인 토큰에 대해 유효성 검증에 실패한다.</td>
+<td class="success">validToken_invalidToken()</td>
+<td class="success">0.015s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">validToken(): 유효한 토큰에 대해 유효성 검증에 성공한다.</td>
+<td class="success">validToken_validToken()</td>
+<td class="success">1.672s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>15:17:18.352 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [me.shinsunyoung.springbootdeveloper.config.jwt.TokenProviderTest]: TokenProviderTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:17:18.723 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration me.shinsunyoung.SpringBootDeveloperApplication for test class me.shinsunyoung.springbootdeveloper.config.jwt.TokenProviderTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2024-05-03T15:17:19.952+09:00  INFO 20840 --- [    Test worker] m.s.s.config.jwt.TokenProviderTest       : Starting TokenProviderTest using Java 17.0.11 with PID 20840 (started by 이기필 in C:\Users\이기필\backend-helloworld\BlogTest)
+2024-05-03T15:17:19.956+09:00  INFO 20840 --- [    Test worker] m.s.s.config.jwt.TokenProviderTest       : The following 1 profile is active: &quot;KEY&quot;
+2024-05-03T15:17:22.101+09:00  INFO 20840 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-03T15:17:22.266+09:00  INFO 20840 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 145 ms. Found 3 JPA repository interfaces.
+2024-05-03T15:17:23.979+09:00  INFO 20840 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-03T15:17:24.680+09:00  INFO 20840 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:84b186d5-f406-4390-8038-73cc14fbb821 user=SA
+2024-05-03T15:17:24.684+09:00  INFO 20840 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-03T15:17:24.909+09:00  INFO 20840 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-03T15:17:25.089+09:00  INFO 20840 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2024-05-03T15:17:25.201+09:00  INFO 20840 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-03T15:17:26.078+09:00  INFO 20840 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-03T15:17:28.522+09:00  INFO 20840 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists article cascade 
+Hibernate: 
+    drop table if exists refresh_token cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    create table article (
+        created_at timestamp(6),
+        id bigint generated by default as identity,
+        updated_at timestamp(6),
+        author varchar(255) not null,
+        content varchar(255) not null,
+        title varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table refresh_token (
+        id bigint generated by default as identity,
+        user_id bigint not null unique,
+        refresh_token varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        id bigint generated by default as identity,
+        email varchar(255) not null unique,
+        nickname varchar(255) unique,
+        password varchar(255),
+        primary key (id)
+    )
+2024-05-03T15:17:28.617+09:00  INFO 20840 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-03T15:17:29.701+09:00  WARN 20840 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-03T15:17:30.823+09:00  INFO 20840 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6023b54f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14d9ae22, org.springframework.security.web.context.SecurityContextHolderFilter@129b0ed, org.springframework.security.web.header.HeaderWriterFilter@3bede349, org.springframework.web.filter.CorsFilter@15e881c0, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@7de2c19c, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@5c450960, me.shinsunyoung.springbootdeveloper.config.TokenAuthenticationFilter@654dbb78, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75ff2b6d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@20a7ce0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68ee7b3b, org.springframework.security.web.session.SessionManagementFilter@299c86f0, org.springframework.security.web.access.ExceptionTranslationFilter@3749c6ac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@e98004e]
+2024-05-03T15:17:31.767+09:00  INFO 20840 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:84b186d5-f406-4390-8038-73cc14fbb821'
+2024-05-03T15:17:31.878+09:00  WARN 20840 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore org.springframework.boot.autoconfigure.security.servlet.PathRequest$H2ConsoleRequestMatcher@6345dc06. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-05-03T15:17:31.878+09:00  INFO 20840 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure org.springframework.boot.autoconfigure.security.servlet.PathRequest$H2ConsoleRequestMatcher@6345dc06
+2024-05-03T15:17:31.879+09:00  WARN 20840 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/img/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-05-03T15:17:31.880+09:00  INFO 20840 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/img/**']
+2024-05-03T15:17:31.881+09:00  WARN 20840 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/css/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-05-03T15:17:31.881+09:00  INFO 20840 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/css/**']
+2024-05-03T15:17:31.881+09:00  WARN 20840 --- [    Test worker] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Ant [pattern='/js/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2024-05-03T15:17:31.881+09:00  INFO 20840 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure Ant [pattern='/js/**']
+2024-05-03T15:17:32.049+09:00  INFO 20840 --- [    Test worker] m.s.s.config.jwt.TokenProviderTest       : Started TokenProviderTest in 12.833 seconds (process running for 16.145)
+Hibernate: 
+    insert 
+    into
+        users
+        (email, nickname, password, id) 
+    values
+        (?, ?, ?, default)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.5</a> at 2024. 5. 3. 오후 3:17:38</p>
+</div>
+</div>
+</body>
+</html>
