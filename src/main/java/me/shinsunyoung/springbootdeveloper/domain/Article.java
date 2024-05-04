@@ -5,11 +5,13 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.shinsunyoung.springbootdeveloper.dto.Comment;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @EntityListeners(AuditingEntityListener.class) // 엔티티 생성 및 수정 시간을 자동으로 감시하고 기록
 @Entity
@@ -50,4 +52,7 @@ public class Article {
     @LastModifiedDate // 엔티티가 수정될 때 수정 시간 저장
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE) // 부모 엔티티가 삭제되면 자식 모두 삭제됨
+    private List<Comment> comments;
 }
